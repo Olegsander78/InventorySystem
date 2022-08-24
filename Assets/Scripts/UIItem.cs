@@ -4,15 +4,17 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UIItem : MonoBehaviour, IPointerDownHandler
+public class UIItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public Item item;
     private Image spriteImage;
     private UIItem selectedItem;
+    private Tooltip tooltip;
 
     private void Awake()
     {
         selectedItem = GameObject.Find("SelectedItem").GetComponent<UIItem>();
+        tooltip = GameObject.Find("Tooltip").GetComponent<Tooltip>();
         spriteImage = GetComponent<Image>();
         UpdateItem(null);
     }
@@ -50,5 +52,18 @@ public class UIItem : MonoBehaviour, IPointerDownHandler
             UpdateItem(selectedItem.item);
             selectedItem.UpdateItem(null);
         }
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+       if(this.item != null)
+        {
+            tooltip.GenerateTooltip(this.item);
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        tooltip.gameObject.SetActive(false);
     }
 }

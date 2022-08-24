@@ -15,6 +15,13 @@ public class Inventory : MonoBehaviour
         GiveItem(0);
         GiveItem(2);
     }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            inventoryUI.gameObject.SetActive(!inventoryUI.gameObject.activeSelf);
+        }
+    }
     public void GiveItem(int id)
     {
         Item itemAdd = itemDatabase.GetItem(id);
