@@ -24,14 +24,14 @@ public class ItemDatabase : MonoBehaviour
     {
         items = new List<Item>()
         {
-            new Item(0,"Diamod sword"," A sword made of diamond.",
+            new Item(0,"Diamond sword"," A sword made of diamond.",
             new Dictionary<string, int>
             {
                 {"Power", 15 },
                 {"Defence", 10 }
             }),
             
-            new Item(1,"Diamod ore"," A diamond ore.",
+            new Item(1,"Diamond ore"," A diamond ore.",
             new Dictionary<string, int>
             {
                 {"Value", 300 }
